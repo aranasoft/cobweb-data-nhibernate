@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using Cobweb.Testing.NHibernate;
 using FluentNHibernate;
 using FluentNHibernate.Automapping;
+using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Helpers;
 using NHibernate.Cfg;
@@ -12,7 +12,7 @@ namespace Cobweb.Data.NHibernate.Tests.Util {
         public Configuration SessionConfiguration { get; private set; }
 
         public SqLiteNHibernateFixture() {
-            var connectionConfig = new FluentMigratorSQLiteInMemoryConnectionConfiguration();
+            var connectionConfig = SQLiteConfiguration.Standard.InMemory().QuerySubstitutions("true=1;false=0");
             FluentNHibernate.Cfg.Fluently.Configure()
                             .Mappings(
                                 m =>
@@ -20,7 +20,7 @@ namespace Cobweb.Data.NHibernate.Tests.Util {
                                         AutoMap.Source(GetEntityTypeSources())
                                                .Conventions.Setup(ConfigureConventions)))
                             .ExposeConfiguration(config => { SessionConfiguration = config; })
-                            .Database(connectionConfig.Configuration())
+                            .Database(connectionConfig)
                             .BuildConfiguration();
         }
 
