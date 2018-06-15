@@ -8,12 +8,37 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Include="..\Data.NHibernate3.Tests\CompileTests.cs" Link="CompileTests.cs" />
+      <Compile Include="..\Data.NHibernate3.Tests\Entities\ChildEntity.cs" Link="Entities\ChildEntity.cs" />
+      <Compile Include="..\Data.NHibernate3.Tests\Entities\GrandchildEntity.cs" Link="Entities\GrandchildEntity.cs" />
+      <Compile Include="..\Data.NHibernate3.Tests\Entities\RootEntity.cs" Link="Entities\RootEntity.cs" />
+      <Compile Include="..\Data.NHibernate3.Tests\EntityTypeSourceSpecs.cs" Link="EntityTypeSourceSpecs.cs" />
+      <Compile Include="..\Data.NHibernate3.Tests\FetchManySpecs.cs" Link="FetchManySpecs.cs" />
+      <Compile Include="..\Data.NHibernate3.Tests\FetchSpecs.cs" Link="FetchSpecs.cs" />
+      <Compile Include="..\Data.NHibernate3.Tests\Util\SqLiteNHibernateFixture.cs" Link="Util\SqLiteNHibernateFixture.cs" />
+      <Compile Include="..\Data.NHibernate3.Tests\Util\SqLiteNHibernateTest.cs" Link="Util\SqLiteNHibernateTest.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Cobweb" Version="[1.1.1,2)" />
+        <PackageReference Include="Cobweb.Testing" version="0.1.2.0" />
+        <PackageReference Include="Cobweb.Testing.NHibernate" version="[1.40,1.50)" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
         <PackageReference Include="FluentNHibernate" Version="[2,2.1)" />
+        <PackageReference Include="FluentAssertions" Version="5.4.0" />
+        <PackageReference Include="System.Data.SQLite" version="1.0.108" />
+        <PackageReference Include="xunit" Version="2.3.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Data.NHibernate4\Data.NHibernate4.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Entities\" />
+      <Folder Include="Util\" />
     </ItemGroup>
 
 </Project>
