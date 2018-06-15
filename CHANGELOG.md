@@ -1,3 +1,13 @@
+<a name="1.50.1"></a>
+## [1.50.1](https://github.com/aranasoft/cobweb-data-nhibernate/compare/v1.40.3...v1.50.1) (2018-06-15)
+
+
+### Features
+
+* **nhibernate:** add support for nhibernate 5.1 ([c434b09](https://github.com/aranasoft/cobweb-data-nhibernate/commit/c434b09))
+
+
+
 <a name="1.40.3"></a>
 ## [1.40.3](https://github.com/aranasoft/cobweb-data-nhibernate/compare/v1.40.2...v1.40.3) (2018-06-15)
 
