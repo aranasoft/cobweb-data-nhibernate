@@ -2,7 +2,7 @@
     <Import Project="../../Common.props" />
 
     <PropertyGroup>
-        <TargetFramework>net45</TargetFramework>
+        <TargetFramework>net452</TargetFramework>
         <AssemblyName>Cobweb.Data.NHibernate.Tests</AssemblyName>
         <RootNamespace>Cobweb.Data.NHibernate.Tests</RootNamespace>
     </PropertyGroup>
@@ -25,7 +25,7 @@
         <PackageReference Include="Cobweb.Testing.NHibernate" version="[1.40,1.50)" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
         <PackageReference Include="FluentNHibernate" Version="[2,2.1)" />
-        <PackageReference Include="FluentAssertions" Version="5.4.0" />
+        <PackageReference Include="FluentAssertions" Version="[5.4.0,6)" />
         <PackageReference Include="System.Data.SQLite" version="1.0.108" />
         <PackageReference Include="xunit" Version="2.3.1" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
