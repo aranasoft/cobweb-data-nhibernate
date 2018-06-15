@@ -3,16 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate3", "src\Data.NHibernate3\Data.NHibernate3.csproj", "{4CB65D8A-99BA-4274-B323-9ACCF19606EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate3", "src\Data.NHibernate3\Data.NHibernate3.csproj", "{4CB65D8A-99BA-4274-B323-9ACCF19606EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate4", "src\Data.NHibernate4\Data.NHibernate4.csproj", "{84085341-8720-44EE-BD78-B5F5C38BC330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate4", "src\Data.NHibernate4\Data.NHibernate4.csproj", "{84085341-8720-44EE-BD78-B5F5C38BC330}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate3.Tests", "test\Data.NHibernate3.Tests\Data.NHibernate3.Tests.csproj", "{05328E70-9ADD-4790-B61B-3902000301FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate3.Tests", "test\Data.NHibernate3.Tests\Data.NHibernate3.Tests.csproj", "{05328E70-9ADD-4790-B61B-3902000301FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate4.Tests", "test\Data.NHibernate4.Tests\Data.NHibernate4.Tests.csproj", "{7FD6C25F-D2A1-492D-9067-CC8772E7E4D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate4.Tests", "test\Data.NHibernate4.Tests\Data.NHibernate4.Tests.csproj", "{7FD6C25F-D2A1-492D-9067-CC8772E7E4D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89ACABCD-0E5D-4DDC-A4A2-5E7B19C4BF35}"
 	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.md = CHANGELOG.md
 		Common.props = Common.props
 		LICENSE = LICENSE
 		README.md = README.md
