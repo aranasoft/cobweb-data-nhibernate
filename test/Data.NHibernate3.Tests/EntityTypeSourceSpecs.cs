@@ -15,8 +15,8 @@ namespace Cobweb.Data.NHibernate.Tests {
         }
 
         [Fact]
-        public void ItShouldContainTwoTypes() {
-            _entityTypeSource.GetTypes().Count().Should().Be(2);
+        public void ItShouldContainCorrectTypeCount() {
+            _entityTypeSource.GetTypes().Count().Should().Be(3);
         }
 
         [Fact]
