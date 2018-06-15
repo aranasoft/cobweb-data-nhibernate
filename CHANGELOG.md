@@ -1,14 +1,31 @@
+<a name="1.40.3"></a>
+## [1.40.3](https://github.com/aranasoft/cobweb-data-nhibernate/compare/v1.40.2...v1.40.3) (2018-06-15)
+
+
+### Bug Fixes
+
+* **fetch:** support ThenFetch / ThenFetchMany on Eager Load in NHib v3 ([c0bada1](https://github.com/aranasoft/cobweb-data-nhibernate/commit/c0bada1))
+
+
+### Features
+
+* **config:** add EntityTypeSource for automapping ([9ff8106](https://github.com/aranasoft/cobweb-data-nhibernate/commit/9ff8106))
+
+
+
 <a name="1.40.2"></a>
 # 1.40.2 (2017-07-20)
+
+
+### Bug Fixes
+
+* **fetch:** support ThenFetch / ThenFetchMany on Eager Load ([23e60a8](https://github.com/aranasoft/cobweb/commit/23e60a8))
 
 
 ### Features
 
 * **cache:** add NHibernate Caching Wrapper to support testability ([d2d571e](https://github.com/aranasoft/cobweb/commit/d2d571e))
 
-### Bug Fixes
-
-* **fetch:** support ThenFetch / ThenFetchMany on Eager Load ([23e60a8](https://github.com/aranasoft/cobweb/commit/23e60a8))
 
 
 <a name="1.40.1"></a>
@@ -18,6 +35,7 @@
 ### Features
 
 * **nhibernate:** add support for NHibernate v4 ([e671826](https://github.com/aranasoft/cobweb/commit/e671826))
+
 
 
 <a name="1.0.3"></a>

@@ -1,0 +1,22 @@
+{
+  "name": "data-nhibernate",
+  "version": "1.40.3",
+  "description": "FluentNHibernate utilities and classes for Cobweb, a utility library for .NET.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aranasoft/cobweb-data-nhibernate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aranasoft/cobweb-data-nhibernate/issues"
+  },
+  "homepage": "https://github.com/aranasoft/cobweb-data-nhibernate#readme"
+}
