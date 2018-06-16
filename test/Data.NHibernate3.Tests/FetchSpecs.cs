@@ -11,8 +11,7 @@ namespace Cobweb.Data.NHibernate.Tests {
     public class FetchSpecs : SqLiteNHibernateTest {
         public FetchSpecs(SqLiteNHibernateFixture fixture) : base(fixture) {
             var root = new RootEntity {
-                Child = new ChildEntity {Parents = new List<RootEntity>()},
-                Children = new List<ChildEntity>()
+                Child = new ChildEntity()
             };
             root.Children.Add(root.Child);
             root.Child.Parent = root;
