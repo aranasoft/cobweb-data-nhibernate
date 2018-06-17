@@ -5,6 +5,7 @@ using Cobweb.Data.NHibernate.QueryableOptions;
 using Cobweb.Data.NHibernate.Tests.Entities;
 using FluentAssertions;
 using Xunit;
+#pragma warning disable 618
 
 namespace Cobweb.Data.NHibernate.Tests {
     [Collection("QueryableOptionsProvider")]

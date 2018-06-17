@@ -17,7 +17,9 @@ namespace Cobweb.Data.NHibernate.Tests {
  
         [Fact]
         public void ItShouldThrowOnCacheableWithQueryableOptionsProviderCacheableCall() {
+#pragma warning disable 618
             Action act = () => QueryableOptionsProvider.Cacheable(Enumerable.Empty<PersonEntity>().AsQueryable()).FirstOrDefault();
+#pragma warning restore 618
 
             act.Should()
                .Throw<NotSupportedException>()
@@ -27,7 +29,9 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldThrowOnCacheModeWithDirectCacheModeCall() {
+#pragma warning disable 618
             Action act = () => QueryableOptionsProvider.CacheMode(Enumerable.Empty<PersonEntity>().AsQueryable(), CacheMode.Normal).FirstOrDefault();
+#pragma warning restore 618
 
             act.Should()
                .Throw<NotSupportedException>()
@@ -37,7 +41,9 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldThrowOnCacheRegionWithDirectCacheRegionCall() {
+#pragma warning disable 618
             Action act = () => QueryableOptionsProvider.CacheRegion(Enumerable.Empty<PersonEntity>().AsQueryable(), "test").FirstOrDefault();
+#pragma warning restore 618
 
             act.Should()
                .Throw<NotSupportedException>()
@@ -47,7 +53,9 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldThrowOnTimeoutWithDirectTimeoutCall() {
+#pragma warning disable 618
             Action act = () => QueryableOptionsProvider.Timeout(Enumerable.Empty<PersonEntity>().AsQueryable(), 1000).FirstOrDefault();
+#pragma warning restore 618
 
             act.Should()
                .Throw<NotSupportedException>()
@@ -57,7 +65,9 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldThrowOnCacheableWithQueryableOptionsProviderSetOptionsCall() {
+#pragma warning disable 618
             Action act = () => QueryableOptionsProvider.SetOptions(Enumerable.Empty<PersonEntity>().AsQueryable(), options => options.SetCacheable(true)).FirstOrDefault();
+#pragma warning restore 618
 
             act.Should()
                .Throw<NotSupportedException>()
