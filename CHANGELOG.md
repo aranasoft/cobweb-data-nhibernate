@@ -1,3 +1,13 @@
+<a name="1.50.2"></a>
+## [1.50.2](https://github.com/aranasoft/cobweb-data-nhibernate/compare/v1.50.1...v1.50.2) (2018-06-17)
+
+
+### Features
+
+* **query_opts:** add support for testability under WithOptions query options ([32204f7](https://github.com/aranasoft/cobweb-data-nhibernate/commit/32204f7))
+
+
+
 <a name="1.50.1"></a>
 ## [1.50.1](https://github.com/aranasoft/cobweb-data-nhibernate/compare/v1.40.3...v1.50.1) (2018-06-15)
 
