@@ -1,12 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Cobweb.Data.NHibernate.QueryableOptions;
 using NHibernate.Linq;
 
 namespace Cobweb.Data.NHibernate.Caching {
-    public class NHibernateCachingProvider : ICachingProvider {
-        public ICacheRequest<T> Cacheable<T>(
+    [Obsolete("Please use NHibernateQueryableOptionsProvider instead.")]
+    public class NHibernateCachingProvider : NHibernateQueryableOptionsProvider, ICachingProvider {
+        public IQueryable<T> Cacheable<T>(
             IQueryable<T> source) {
-            var cachedQuery = source.WithOptions(opt => opt.SetCacheable(true));
-            return new NHibernateCacheRequest<T>(cachedQuery);
+            return source.WithOptions(o => o.SetCacheable(true));
         }
     }
 }

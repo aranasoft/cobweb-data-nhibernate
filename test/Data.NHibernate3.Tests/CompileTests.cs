@@ -13,22 +13,30 @@ namespace Cobweb.Data.NHibernate.Tests {
     public class CompileTests {
         internal class ExtensionMethodCompiler {
             public void ShouldCompile() {
-                var fetchThenFetchThenFetch = new Collection<RootEntity>().AsQueryable()
-                                              .Fetch(thing => thing.Child)
-                                              .ThenFetch(child => child.Parent)
-                                              .ThenFetch(parent => parent.Child);
-                var fetchThenFetchManyThenFetch = new Collection<RootEntity>().AsQueryable()
-                                                  .Fetch(thing => thing.Child)
-                                                  .ThenFetchMany(child => child.Parents)
-                                                  .ThenFetch(parent => parent.Child);
-                var fetchManyThenFetchThenFetchMany = new Collection<RootEntity>().AsQueryable()
-                                                      .FetchMany(thing => thing.Children)
-                                                      .ThenFetch(child => child.Parent)
-                                                      .ThenFetchMany(parent => parent.Children);
-                var fetchManyThenFetchManyThenFetchMany = new Collection<RootEntity>().AsQueryable()
-                                                          .FetchMany(thing => thing.Children)
-                                                          .ThenFetchMany(child => child.Parents)
-                                                          .ThenFetchMany(parent => parent.Children);
+                var oneOneMany = new Collection<CarEntity>().AsQueryable()
+                                                            .Fetch(carEntity => carEntity.Owner)
+                                                            .ThenFetch(personEntity => personEntity.Employer)
+                                                            .ThenFetchMany(employerEntity => employerEntity.Employees);
+                var oneManyOne = new Collection<PersonEntity>().AsQueryable()
+                                                               .Fetch(thing => thing.Employer)
+                                                               .ThenFetchMany(child => child.Employees)
+                                                               .ThenFetch(parent => parent.Representative);
+                var oneManyMany = new Collection<PersonEntity>().AsQueryable()
+                                                                .Fetch(thing => thing.Employer)
+                                                                .ThenFetchMany(child => child.Employees)
+                                                                .ThenFetchMany(parent => parent.Cars);
+                var manyOneMany = new Collection<PersonEntity>().AsQueryable()
+                                                                .FetchMany(thing => thing.Pets)
+                                                                .ThenFetch(child => child.Owner)
+                                                                .ThenFetchMany(parent => parent.Cars);
+                var manyManyOne = new Collection<EmployerEntity>().AsQueryable()
+                                                                  .FetchMany(thing => thing.Employees)
+                                                                  .ThenFetchMany(child => child.Cars)
+                                                                  .ThenFetch(parent => parent.Owner);
+                var manyOneOne = new Collection<PersonEntity>().AsQueryable()
+                                                               .FetchMany(thing => thing.Cars)
+                                                               .ThenFetch(child => child.Owner)
+                                                               .ThenFetch(parent => parent.Employer);
             }
         }
 

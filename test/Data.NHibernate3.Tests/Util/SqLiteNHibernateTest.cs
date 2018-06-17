@@ -14,6 +14,7 @@ namespace Cobweb.Data.NHibernate.Tests.Util {
             SessionConfiguration = fixture.SessionConfiguration;
             SessionFactory = SessionConfiguration.SetProperty("generate_statistics", true.ToString()).BuildSessionFactory();
             Session = SessionFactory.OpenSession();
+            Session.FlushMode = FlushMode.Commit;
 
             var schemaExport = new SchemaExport(SessionConfiguration);
             schemaExport.Execute(false, true, false, Session.Connection, null);

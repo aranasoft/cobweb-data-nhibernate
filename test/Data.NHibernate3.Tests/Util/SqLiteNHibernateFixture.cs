@@ -6,6 +6,7 @@ using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Helpers;
 using NHibernate.Cfg;
+using Cobweb.Data.NHibernate.Tests.Entities;
 
 namespace Cobweb.Data.NHibernate.Tests.Util {
     public class SqLiteNHibernateFixture {
@@ -18,14 +19,26 @@ namespace Cobweb.Data.NHibernate.Tests.Util {
                                 m =>
                                     m.AutoMappings.Add(
                                         AutoMap.Source(GetEntityTypeSources())
-                                               .Conventions.Setup(ConfigureConventions)))
+                                               .Conventions.Setup(ConfigureConventions)
+                                               .Override<PersonEntity>(map => {
+                                                   map.References(entity => entity.Representative).Column("RepresentativeId");
+                                                   map.References(entity => entity.Employer).Column("EmployerId");
+                                                   map.HasMany(entity => entity.Cars).KeyColumn("OwnerId");
+                                                   map.HasMany(entity => entity.Pets).KeyColumn("OwnerId");
+                                               })
+                                               .Override<EmployerEntity>(map => map.HasMany(entity => entity.Employees).KeyColumn("EmployerId"))
+                                               .Override<RepresentativeEntity>(map => map.HasMany(entity => entity.Constituents).KeyColumn("RepresentativeId"))
+                                               .Override<PetEntity>(map => map.References(entity => entity.Owner).Column("OwnerId"))
+                                               .Override<CarEntity>(map => map.References(entity => entity.Owner).Column("OwnerId"))
+                                               )
+                                     )
                             .ExposeConfiguration(config => { SessionConfiguration = config; })
                             .Database(connectionConfig)
                             .BuildConfiguration();
         }
 
         private static void ConfigureConventions(IConventionFinder conventions) {
-            conventions.Add(DefaultCascade.SaveUpdate());
+            conventions.Add(DefaultCascade.All());
             conventions.Add(DefaultLazy.Always());
             conventions.Add(ConventionBuilder.Id.Always(convention => convention.GeneratedBy.GuidComb()));
             conventions.Add(ConventionBuilder.HasMany.Always(convention => convention.Inverse()));

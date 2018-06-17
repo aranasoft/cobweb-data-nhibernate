@@ -16,17 +16,17 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldContainCorrectTypeCount() {
-            _entityTypeSource.GetTypes().Count().Should().Be(3);
+            _entityTypeSource.GetTypes().Count().Should().Be(5);
         }
 
         [Fact]
-        public void ItShouldContainRootEntityType() {
-            _entityTypeSource.GetTypes().Should().Contain(typeof(RootEntity));
+        public void ItShouldContainPersonEntityType() {
+            _entityTypeSource.GetTypes().Should().Contain(typeof(CarEntity));
         }
 
         [Fact]
         public void ItShouldContainChildEntityType() {
-            _entityTypeSource.GetTypes().Should().Contain(typeof(ChildEntity));
+            _entityTypeSource.GetTypes().Should().Contain(typeof(PersonEntity));
         }
     }
 }

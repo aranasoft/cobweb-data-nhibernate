@@ -10,10 +10,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\Data.NHibernate4\Caching\CacheRequest.cs" Link="Caching\CacheRequest.cs" />
-      <Compile Include="..\Data.NHibernate4\Caching\ICacheRequest.cs" Link="Caching\ICacheRequest.cs" />
-      <Compile Include="..\Data.NHibernate4\Caching\ICachingProvider.cs" Link="Caching\ICachingProvider.cs" />
-      <Compile Include="..\Data.NHibernate4\Caching\NHibernateCacheRequest.cs" Link="Caching\NHibernateCacheRequest.cs" />
       <Compile Include="..\Data.NHibernate3\EntityTypeSource.cs" Link="EntityTypeSource.cs" />
       <Compile Include="..\Data.NHibernate3\Fetching\FetchRequest.cs" Link="Fetching\FetchRequest.cs" />
       <Compile Include="..\Data.NHibernate3\Fetching\IFetchingProvider.cs" Link="Fetching\IFetchingProvider.cs" />
@@ -24,7 +20,6 @@
       <Compile Include="..\Data.NHibernate3\INHibernateFactoryBuilder.cs" Link="INHibernateFactoryBuilder.cs" />
       <Compile Include="..\Data.NHibernate3\INHibernateSessionBuilder.cs" Link="INHibernateSessionBuilder.cs" />
       <Compile Include="..\Data.NHibernate3\NHibernateTransactionHandler.cs" Link="NHibernateTransactionHandler.cs" />
-      <Compile Include="..\Data.NHibernate4\Providers\CachingProvider.cs" Link="Providers\CachingProvider.cs" />
       <Compile Include="..\Data.NHibernate3\Providers\EagerFetch.cs" Link="Providers\EagerFetch.cs" />
     </ItemGroup>
 
