@@ -1,9 +1,9 @@
 ﻿using System.Linq;
+using Cobweb.Data.NHibernate.Providers;
 using Cobweb.Data.NHibernate.Tests.Entities;
 using Cobweb.Data.NHibernate.Tests.Util;
 using FluentAssertions;
 using NHibernate;
-using NHibernate.Linq;
 using Xunit;
 
 namespace Cobweb.Data.NHibernate.Tests {
@@ -102,7 +102,9 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldInitializeReferenceCollectionsWhenFetched() {
-            var root = Session.Query<EmployerEntity>().FetchMany(PersonEntity => PersonEntity.Employees).FirstOrDefault();
+            var employerEntities = Session.Query<EmployerEntity>();
+            var fetchRequest = EagerFetch.FetchMany(employerEntities, personEntity => personEntity.Employees);
+            var root = fetchRequest.FirstOrDefault();
             root.Should().NotBeNull();
 
             NHibernateUtil.IsInitialized(root.Employees).Should().BeTrue("Employees should be initialized");
@@ -114,7 +116,7 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldEagerLoadReferenceCollectionsWhenFetched() {
-            var root = Session.Query<EmployerEntity>().FetchMany(employerEntity => employerEntity.Employees).FirstOrDefault();
+            var root = EagerFetch.FetchMany(Session.Query<EmployerEntity>(), employerEntity => employerEntity.Employees).FirstOrDefault();
             root.Should().NotBeNull();
 
             var name = root.Employees.First().Name;
@@ -128,9 +130,7 @@ namespace Cobweb.Data.NHibernate.Tests {
                
         [Fact]
         public void ItShouldInitializeReferenceGrandchildEntitiesWhenFetched() {
-            var root = Session.Query<EmployerEntity>()
-                              .FetchMany(employerEntity => employerEntity.Employees)
-                              .ThenFetch(personEntity => personEntity.Employer)
+            var root = EagerFetch.ThenFetch(EagerFetch.FetchMany(Session.Query<EmployerEntity>(), employerEntity => employerEntity.Employees), personEntity => personEntity.Employer)
                               .FirstOrDefault();
             root.Should().NotBeNull();
 
@@ -143,9 +143,7 @@ namespace Cobweb.Data.NHibernate.Tests {
         
         [Fact]
         public void ItShouldInitializeReferenceGrandchildCollectionsWhenFetched() {
-            var root = Session.Query<EmployerEntity>()
-                               .FetchMany(employerEntity => employerEntity.Employees)
-                               .ThenFetchMany(personEntity => personEntity.Cars)
+            var root = EagerFetch.ThenFetchMany(EagerFetch.FetchMany(Session.Query<EmployerEntity>(), employerEntity => employerEntity.Employees), personEntity => personEntity.Cars)
                                .FirstOrDefault();
             root.Should().NotBeNull();
 

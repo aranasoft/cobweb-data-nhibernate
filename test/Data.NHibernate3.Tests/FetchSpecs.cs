@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using Cobweb.Data.NHibernate.Providers;
 using Cobweb.Data.NHibernate.Tests.Entities;
 using Cobweb.Data.NHibernate.Tests.Util;
 using FluentAssertions;
 using NHibernate;
-using NHibernate.Linq;
 using Xunit;
 
 namespace Cobweb.Data.NHibernate.Tests {
@@ -84,7 +83,7 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldInitializeReferenceEntitiesWhenFetched() {
-            var root = Session.Query<CarEntity>().Fetch(PersonEntity => PersonEntity.Owner).FirstOrDefault();
+            var root = EagerFetch.Fetch(Session.Query<CarEntity>(), personEntity => personEntity.Owner).FirstOrDefault();
             root.Should().NotBeNull();
 
             NHibernateUtil.IsInitialized(root.Owner).Should().BeTrue("Owner should be initialized");
@@ -95,7 +94,7 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         [Fact]
         public void ItShouldEagerLoadReferenceEntitiesWhenFetched() {
-            var root = Session.Query<CarEntity>().Fetch(PersonEntity => PersonEntity.Owner).FirstOrDefault();
+            var root = EagerFetch.Fetch(Session.Query<CarEntity>(), personEntity => personEntity.Owner).FirstOrDefault();
             root.Should().NotBeNull();
 
             var name = root.Owner.Name;
@@ -107,9 +106,7 @@ namespace Cobweb.Data.NHibernate.Tests {
                        
         [Fact]
         public void ItShouldInitializeReferenceGrandchildEntitiesWhenFetched() {
-            var root = Session.Query<CarEntity>()
-                              .Fetch(PersonEntity => PersonEntity.Owner)
-                              .ThenFetch(childEntity => childEntity.Employer)
+            var root = EagerFetch.ThenFetch(EagerFetch.Fetch(Session.Query<CarEntity>(), personEntity => personEntity.Owner), childEntity => childEntity.Employer)
                               .FirstOrDefault();
             root.Should().NotBeNull();
 
@@ -123,9 +120,7 @@ namespace Cobweb.Data.NHibernate.Tests {
         
         [Fact]
         public void ItShouldInitializeReferenceGrandchildCollectionsWhenFetched() {
-            var root = Session.Query<CarEntity>()
-                              .Fetch(PersonEntity => PersonEntity.Owner)
-                              .ThenFetchMany(childEntity => childEntity.Pets)
+            var root = EagerFetch.ThenFetchMany(EagerFetch.Fetch(Session.Query<CarEntity>(), personEntity => personEntity.Owner), childEntity => childEntity.Pets)
                               .FirstOrDefault();
             root.Should().NotBeNull();
 
