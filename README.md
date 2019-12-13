@@ -1,4 +1,6 @@
-# Cobweb.Data.NHibernate ![Visual Studio Team Services](https://aranasoft.visualstudio.com/_apis/public/build/definitions/e012ec23-f4c2-4d38-a0e0-133f48eb2542/17/badge?branchName=master&api-version=5.0-preview.2)
+# Cobweb.Data.NHibernate [Archived]
+
+**This GitHub project has been archived.** Ongoing development on this project can be found in https://github.com/aranasoft/cobweb.
 
 FluentNHibernate utilities and classes for Cobweb, a utility library for .NET.
 
